@@ -14,7 +14,7 @@ importlib.reload(dataset)
 importlib.reload(model)
 
 # Specify paths
-repo_path = '/home/kampff/NoBlackBoxes/repos/OtherBlackBoxes'
+repo_path = '/Users/sumiya/git/LastBlackBox'
 box_path = repo_path + '/boxes/ai/tracking/nose/regression'
 output_path = box_path + '/_tmp'
 
@@ -25,7 +25,7 @@ preprocess = transforms.Compose([
 ])
 
 # Prepare datasets
-train_data, test_data = dataset.prepare('train2017', 0.8)
+train_data, test_data = dataset.prepare('val2017', 0.8)
 
 # Create datasets
 train_dataset = dataset.custom(image_paths=train_data[0], targets=train_data[1], transform=preprocess, augment=True)
@@ -102,7 +102,7 @@ def test(dataloader, model, loss_fn):
     print(f"Test Error: \n Avg loss: {test_loss:>8f}, pixel_loss: {pixel_loss:>5f}\n")
 
 # TRAIN
-epochs = 250
+epochs = 100 # 250
 for t in range(epochs):
     print(f"Epoch {t+1}\n-------------------------------")
     train(train_dataloader, custom_model, loss_fn, optimizer)
@@ -132,7 +132,7 @@ for i in range(9):
     image = np.transpose(feature, (1,2,0))
     plt.imshow(image)
     plt.plot(output[0] * 224, output[1] * 224, 'yo', markersize=15, fillstyle='full')
-    plt.plot(target[0] * 224, target[1] * 224, 'g+', markersize=15,)
+    plt.plot(target[0] * 224, target[1] * 224, 'g+', markersize=15)
 plt.show()
 
 

@@ -4,7 +4,7 @@ from pycocotools.coco import COCO
 from PIL import Image
 
 # Specify paths
-coco_folder = '/home/kampff/Dropbox/Voight-Kampff/Technology/Datasets/coco'
+coco_folder = '/Users/sumiya/git/LastBlackBox/Datasets/coco'
 dataset_name = 'val2017'
 annotations_path = coco_folder + '/annotations/person_keypoints_val2017.json'
 images_path = coco_folder + '/val2017'

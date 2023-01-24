@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import cv2
 import torch
 from pycocotools.coco import COCO
+import gunpowder as gp
 
 # Define dataset class (which extends the utils.data.Dataset module)
 class custom(torch.utils.data.Dataset):
@@ -21,7 +22,7 @@ class custom(torch.utils.data.Dataset):
         target = self.targets[idx,:]
         # Adjust color
         if image.shape[2] == 1: # Is grayscale?
-            image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+            image = cv2.cvtColor(image, cv2.COLOR_GRAY2RGB)
         else:
             image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
         # Augment (or just resize)
@@ -32,7 +33,7 @@ class custom(torch.utils.data.Dataset):
         if self.transform:
             image = self.transform(image)
         if self.target_transform:
-            label = self.target_transform(label)
+            target = self.target_transform(target)
         return image, target
 
 # Load dataset
@@ -60,7 +61,7 @@ def prepare(dataset_name, split):
 def filter(dataset_name):
 
     # Specify paths
-    coco_folder = '/home/kampff/Dropbox/Voight-Kampff/Technology/Datasets/coco'
+    coco_folder = '/Users/sumiya/git/LastBlackBox/Datasets/coco'
     annotations_path = coco_folder + '/annotations/person_keypoints_' + dataset_name + '.json'
     images_folder = coco_folder + '/' + dataset_name
 

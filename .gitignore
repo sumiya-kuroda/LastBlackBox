@@ -54,3 +54,6 @@ _vk
 
 # OSX bullshit
 .DS_Store
+
+lecture/
+Datasets/

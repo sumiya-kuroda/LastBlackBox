@@ -4,7 +4,7 @@ import jax.numpy as jnp
 from jax import grad, jit
 
 # Specify paths
-repo_path = '/home/kampff/NoBlackBoxes/repos/LastBlackBox'
+repo_path = '/Users/sumiya/git/LastBlackBox'
 box_path = repo_path + '/boxes/learning'
 data_path = box_path + '/supervised/_data/complex.csv'
 
